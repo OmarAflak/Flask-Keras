@@ -17,7 +17,7 @@ def hello():
 def predict():
     input = request.args.getlist('x', type=float)
     with graph.as_default():
-        result = model.predict(np.array([input])).tolist()
+        result = model.predict(np.array([input]))[0].tolist()
         data = {'result': result}
         return flask.jsonify(data)
 
