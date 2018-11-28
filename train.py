@@ -3,7 +3,7 @@ from keras.layers.core import Dense
 from keras.optimizers import SGD
 import numpy as np
 
-# training data
+# training data
 X = np.array([[0,0],[0,1],[1,0],[1,1]])
 Y = np.array([[0],[1],[1],[0]])
 
