@@ -40,9 +40,10 @@ model = load_model('xor_model')
 
 @app.route('/predict')
 def predict():
-    input = request.args.getlist('x', type=float)
+    a = request.args['a']
+    b = request.args['b']
     with graph.as_default():
-        result = model.predict(np.array([input]))[0].tolist()
+        result = model.predict(np.array([[a,b]]))[0].tolist()
         data = {'result': result}
         return flask.jsonify(data)
 
@@ -51,8 +52,8 @@ app.run(host='0.0.0.0', debug=False)
 
 # Testing
 
-You can make a simple request using your browser :
+You can make a GET request using your browser :
 
 ```
-http://ip_address:5000/predict?x=0&x=1
+http://ip_address:5000/predict?a=0&b=1
 ```
